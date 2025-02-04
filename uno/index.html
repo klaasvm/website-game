@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNO Online</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="js/firebase.js"></script>
 </head>
 <body>
     <div class="container">
         <img src="images/Logo.webp" alt="UNO Logo" class="logo">
+        
         <div class="buttons-container">
-            <button class="btn create-game">
+            <button class="btn create-game" onclick="window.location.href='create.html'">
                 <span>Create Game</span>
             </button>
-            <button class="btn join-game">
+            <button class="btn join-game" onclick="window.location.href='join.html'">
                 <span>Join Game</span>
             </button>
         </div>

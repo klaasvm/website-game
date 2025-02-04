@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Game - UNO</title>
+    <link rel="stylesheet" href="join.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/join.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div id="joinCodeForm">
+                <h2>Join Game</h2>
+                <input type="text" id="gameCode" placeholder="Game Code">
+                <button id="joinBtn">Join</button>
+            </div>
+            
+            <div id="joinNameForm" style="display: none;">
+                <h2>Voer je naam in</h2>
+                <input type="text" id="playerName" placeholder="Your Name">
+                <button id="confirmJoinBtn">Bevestig</button>
+            </div>
+
+            <div id="statusMessage" style="display: none;">
+                <h3>Wachten op spelleider...</h3>
+                <p>Game code: <span id="displayGameCode"></span></p>
+                <button id="leaveGameBtn" class="btn">Verlaten</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
