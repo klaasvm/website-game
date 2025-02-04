@@ -28,7 +28,18 @@ document.getElementById('createBtn').addEventListener('click', () => {
 document.getElementById('stopGameBtn').addEventListener('click', () => {
     if (!currentGameCode) return;
     if (confirm('Weet je zeker dat je het spel wilt stoppen?')) {
-        database.ref('games/' + currentGameCode).remove();
-        window.location.href = 'index.html';
+        database.ref('games/' + currentGameCode).remove().then(() => {
+            window.location.href = 'index.html';
+        });
+    }
+});
+
+window.addEventListener('beforeunload', (e) => {
+    if (currentGameCode) {
+        database.ref('games/' + currentGameCode).update({
+            status: 'ended'
+        }).then(() => {
+            database.ref('games/' + currentGameCode).remove();
+        });
     }
 });
