@@ -40,8 +40,8 @@ document.getElementById('startGameBtn').addEventListener('click', () => {
     const gameRef = database.ref('games/' + currentGameCode);
     gameRef.update({ status: 'play' }).then(() => {
         alert('Het spel is gestart!');
-        // Hier kun je de speler doorsturen naar het game-scherm
-        // window.location.href = 'game.html';
+        // Stuur de host door naar game.html
+        window.location.href = 'game.html';
     });
 });
 

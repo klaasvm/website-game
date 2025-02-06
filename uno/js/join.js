@@ -39,6 +39,9 @@ document.getElementById('confirmJoinBtn').addEventListener('click', () => {
             if (!snapshot.exists() || snapshot.val() === 'ended') {
                 alert('De spelleider heeft het spel beëindigd!');
                 window.location.href = 'join.html';
+            } else if (snapshot.val() === 'play') {
+                // Stuur de speler door naar game.html als het spel start
+                window.location.href = 'game.html';
             }
         });
     });
