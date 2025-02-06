@@ -26,7 +26,7 @@ document.getElementById('createBtn').addEventListener('click', () => {
 
         // Schakel de Start-knop in of uit op basis van het aantal spelers
         const startGameBtn = document.getElementById('startGameBtn');
-        if (players.length >= 3 && players.length <= 10) {
+        if (players.length >= 2 && players.length <= 9) {
             startGameBtn.disabled = false;
         } else {
             startGameBtn.disabled = true;
