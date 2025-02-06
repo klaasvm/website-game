@@ -74,3 +74,8 @@ button {
 #statusMessage {
     margin-top: 20px;
 }
+
+#startGameBtn:disabled {
+    background: #ccc !important;
+    cursor: not-allowed;
+}

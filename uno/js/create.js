@@ -16,15 +16,36 @@ document.getElementById('createBtn').addEventListener('click', () => {
         status: 'waiting'
     });
 
+    // Luister naar wijzigingen in de spelerslijst
     gameRef.child('players').on('value', (snapshot) => {
         const players = Object.keys(snapshot.val() || {});
         document.getElementById('playersList').innerHTML = `
             <h3>Spelers:</h3>
             <ul>${players.map(player => `<li>${player}</li>`).join('')}</ul>
         `;
+
+        // Schakel de Start-knop in of uit op basis van het aantal spelers
+        const startGameBtn = document.getElementById('startGameBtn');
+        if (players.length >= 3 && players.length <= 10) {
+            startGameBtn.disabled = false;
+        } else {
+            startGameBtn.disabled = true;
+        }
     });
 });
 
+// Start de game wanneer op de Start-knop wordt gedrukt
+document.getElementById('startGameBtn').addEventListener('click', () => {
+    if (!currentGameCode) return;
+    const gameRef = database.ref('games/' + currentGameCode);
+    gameRef.update({ status: 'play' }).then(() => {
+        alert('Het spel is gestart!');
+        // Hier kun je de speler doorsturen naar het game-scherm
+        // window.location.href = 'game.html';
+    });
+});
+
+// Stop de game wanneer op de Stop-knop wordt gedrukt
 document.getElementById('stopGameBtn').addEventListener('click', () => {
     if (!currentGameCode) return;
     if (confirm('Weet je zeker dat je het spel wilt stoppen?')) {
@@ -34,6 +55,7 @@ document.getElementById('stopGameBtn').addEventListener('click', () => {
     }
 });
 
+// Verwijder de game als de host de pagina verlaat
 window.addEventListener('beforeunload', (e) => {
     if (currentGameCode) {
         database.ref('games/' + currentGameCode).update({
