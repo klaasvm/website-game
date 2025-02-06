@@ -39,8 +39,6 @@ document.getElementById('startGameBtn').addEventListener('click', () => {
     if (!currentGameCode) return;
     const gameRef = database.ref('games/' + currentGameCode);
     gameRef.update({ status: 'play' }).then(() => {
-        alert('Het spel is gestart!');
-        // Stuur de host door naar game.html
         window.location.href = 'game.html';
     });
 });
