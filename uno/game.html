@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNO Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="js/firebase.js"></script>
+    <script>
+        // Controleer of de gebruiker via create.html of join.html is gekomen
+        if (!sessionStorage.getItem('allowedToEnterGame')) {
+            // Als de gebruiker niet is toegestaan, stuur ze terug naar index.html
+            window.location.href = 'index.html';
+        } else {
+            // Verwijder de vlag zodat ze niet opnieuw kunnen komen zonder create.html of join.html
+            sessionStorage.removeItem('allowedToEnterGame');
+        }
+    </script>
+</head>
+<body>
+    <h1>UNO Game</h1>
+</body>
+</html>
