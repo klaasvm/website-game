@@ -40,7 +40,9 @@ document.getElementById('confirmJoinBtn').addEventListener('click', () => {
                 alert('De spelleider heeft het spel beëindigd!');
                 window.location.href = 'join.html';
             } else if (snapshot.val() === 'play') {
-                // Stuur de speler door naar game.html als het spel start
+                // Markeer de gebruiker als toegestaan om naar game.html te gaan
+                sessionStorage.setItem('allowedToEnterGame', 'true');
+                // Stuur de speler door naar game.html
                 window.location.href = 'game.html';
             }
         });

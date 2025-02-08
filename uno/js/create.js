@@ -39,6 +39,9 @@ document.getElementById('startGameBtn').addEventListener('click', () => {
     if (!currentGameCode) return;
     const gameRef = database.ref('games/' + currentGameCode);
     gameRef.update({ status: 'play' }).then(() => {
+        // Markeer de gebruiker als toegestaan om naar game.html te gaan
+        sessionStorage.setItem('allowedToEnterGame', 'true');
+        // Stuur de host door naar game.html
         window.location.href = 'game.html';
     });
 });
