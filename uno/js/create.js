@@ -24,9 +24,14 @@ document.getElementById('createBtn').addEventListener('click', () => {
             <ul>${players.map(player => `<li>${player}</li>`).join('')}</ul>
         `;
 
+        // Laat de gamemode-selectie zien zodra er minstens 1 speler is
+        if (players.length > 0) {
+            document.getElementById('gameModeContainer').style.display = 'block';
+        }
+
         // Schakel de Start-knop in of uit op basis van het aantal spelers
         const startGameBtn = document.getElementById('startGameBtn');
-        if (players.length >= 2 && players.length <= 9) {
+        if (players.length >= 1 && players.length <= 9) {
             startGameBtn.disabled = false;
         } else {
             startGameBtn.disabled = true;
@@ -37,11 +42,15 @@ document.getElementById('createBtn').addEventListener('click', () => {
 // Start de game wanneer op de Start-knop wordt gedrukt
 document.getElementById('startGameBtn').addEventListener('click', () => {
     if (!currentGameCode) return;
+
+    const selectedGameMode = document.getElementById('gameMode').value;
     const gameRef = database.ref('games/' + currentGameCode);
-    gameRef.update({ status: 'play' }).then(() => {
-        // Markeer de gebruiker als toegestaan om naar game.html te gaan
+    
+    gameRef.update({ 
+        status: 'play',
+        gamemode: selectedGameMode
+    }).then(() => {
         sessionStorage.setItem('allowedToEnterGame', 'true');
-        // Stuur de host door naar game.html
         window.location.href = 'game.html';
     });
 });
