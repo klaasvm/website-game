@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Game - UNO</title>
+    <link rel="stylesheet" href="layout.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/create.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Create Game</h2>
+            <div id="createForm">
+                <input type="text" id="playerName" placeholder="Your Name">
+                <button id="createBtn">Create Game</button>
+            </div>
+            <div id="gameInfo" style="display: none;">
+                <div id="gameCodeDisplay"></div>
+                <div id="playersList"></div>
+                <button id="startGameBtn" class="btn" disabled>Start Game</button>
+                <button id="stopGameBtn" class="btn">Spel stoppen</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
